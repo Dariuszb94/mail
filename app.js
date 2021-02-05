@@ -11,7 +11,37 @@ route("/", home.innerHTML, function () {
     this.username = document.querySelector("#username").value;
     this.password = document.querySelector("#password").value;
   });
-  this.$on(".login__submit", "click", () => {});
+
+  this.$on(".login__submit", "click", () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      username: this.username,
+      password: this.password,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://zwzt-zadanie.netlify.app/api/login?client_id=mwcZJW1qYyORxKFdUfn5Hn12UO1aDqVip2Yrj2S4TJk",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        let parsed = JSON.parse(result);
+        if (parsed.message === "Login success!") {
+          window.location.href = "/?#/ex1";
+        }
+      })
+      .catch((error) => console.log("error", error));
+    this.$refresh();
+  });
 });
 
 route("/ex1", example1.innerHTML, function () {
