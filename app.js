@@ -5,6 +5,13 @@ import { example2 } from "./templates/index.js";
 route("/", home.innerHTML, function () {
   //route("/", "home", function () {
   this.where = "here";
+  this.username = "1";
+  this.password = "1";
+  this.$on(".login__input", "change", () => {
+    this.username = document.querySelector("#username").value;
+    this.password = document.querySelector("#password").value;
+  });
+  this.$on(".login__submit", "click", () => {});
 });
 
 route("/ex1", example1.innerHTML, function () {

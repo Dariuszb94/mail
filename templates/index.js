@@ -1,8 +1,9 @@
 let preHome = document.createElement("script");
 preHome.setAttribute("type", "text/html");
-preHome.innerHTML = "<h1>Start1 <%= where %>!</h1>";
+preHome.innerHTML =
+  '<form class="login"><input class="login__input" id="username" /><input class="login__input"  id="password"/><button class="login__submit">Submit</button></form>';
 export const home = preHome;
-console.log(home);
+
 let preExample1 = document.createElement("script");
 preExample1.setAttribute("type", "text/html");
 preExample1.innerHTML =
