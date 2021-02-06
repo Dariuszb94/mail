@@ -1,19 +1,27 @@
 import { route } from "./router";
 import { home } from "./templates/index.js";
-import { example1 } from "./templates/index.js";
-import { example2 } from "./templates/index.js";
+import { success } from "./templates/index.js";
+import { notFound } from "./templates/index.js";
 import "./styles.css";
 route("/", home.innerHTML, function () {
-  //route("/", "home", function () {
-  this.where = "here";
-  this.username = "1";
-  this.password = "1";
-  this.$on(".login__input", "change", () => {
+  this.$on(".login-form__input", "change", () => {
     this.username = document.querySelector("#username").value;
     this.password = document.querySelector("#password").value;
   });
 
-  this.$on(".login__submit", "click", () => {
+  this.$on(".login-form__submit", "click", () => {
+    if (this.username && this.password) {
+      send();
+    } else {
+      !this.username
+        ? document.querySelector("#username").classList.add("wrong-input")
+        : document.querySelector("#username").classList.remove("wrong-input");
+      !this.password || this.password === "error"
+        ? document.querySelector("#password").classList.add("wrong-input")
+        : document.querySelector("#password").classList.remove("wrong-input");
+    }
+  });
+  const send = () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -36,31 +44,21 @@ route("/", home.innerHTML, function () {
       .then((response) => response.text())
       .then((result) => {
         let parsed = JSON.parse(result);
+        console.log(raw);
+
         if (parsed.message === "Login success!") {
-          window.location.href = "/?#/ex1";
+          window.location.href = "/?#/success";
+        } else {
+          document.querySelector("#password").classList.add("wrong-input");
         }
       })
       .catch((error) => console.log("error", error));
     this.$refresh();
-  });
+  };
 });
 
-route("/ex1", example1.innerHTML, function () {
-  //route("/ex1", "example1", function () {
-  this.title = "Example 1";
+route("/success", success.innerHTML, function () {
+  this.title = "Success";
 });
 
-route("/ex2", example2.innerHTML, function () {
-  //route("/ex2", "example2", function () {
-  this.title = "Example 2";
-  this.counter = 0;
-  this.$on("button", "click", () => {
-    this.counter += 1;
-    console.log("AAA");
-    console.log(this.counter);
-
-    this.$refresh();
-  });
-});
-
-route("*", "404", function () {});
+route("*", notFound.innerHTML, function () {});
