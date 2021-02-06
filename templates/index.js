@@ -6,8 +6,7 @@ export const home = preHome;
 
 let preSuccess = document.createElement("script");
 preSuccess.setAttribute("type", "text/html");
-preSuccess.innerHTML =
-  "<h1><%= title %></h1><% for (let i of title) { %><span><%= i %></span><% } %>";
+preSuccess.innerHTML = '<h1 class="success-title"><%= title %></h1>';
 export const success = preSuccess;
 
 let preNotFound = document.createElement("script");

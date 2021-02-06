@@ -4,6 +4,10 @@ import { success } from "./templates/index.js";
 import { notFound } from "./templates/index.js";
 import "./styles.css";
 route("/", home.innerHTML, function () {
+  window.location.href = "/?#/";
+  this.username = "";
+  this.password = "";
+
   this.$on(".login-form__input", "change", () => {
     this.username = document.querySelector("#username").value;
     this.password = document.querySelector("#password").value;
@@ -58,7 +62,7 @@ route("/", home.innerHTML, function () {
 });
 
 route("/success", success.innerHTML, function () {
-  this.title = "Success";
+  this.title = "Success!";
 });
 
 route("*", notFound.innerHTML, function () {});
