@@ -18,6 +18,6 @@ On submit, inputs are veryfied - wrong inputs are bordered and boxshadowed in re
 To run this project, download a repo, then go to repo folder, open terminal:
 
 ```
-$ npm install/yarn install
+$ yarn install
 $ npm run dev
 ```
