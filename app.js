@@ -45,7 +45,6 @@ route("/", home.innerHTML, function () {
       .then((response) => response.text())
       .then((result) => {
         let parsed = JSON.parse(result);
-        console.log(raw);
 
         if (parsed.message === "Login success!") {
           window.location.href = "/?#/success";
