@@ -41,10 +41,7 @@ route("/", home.innerHTML, function () {
       redirect: "follow",
     };
 
-    fetch(
-      "https://zwzt-zadanie.netlify.app/api/login?client_id=mwcZJW1qYyORxKFdUfn5Hn12UO1aDqVip2Yrj2S4TJk",
-      requestOptions
-    )
+    fetch("https://zwzt-zadanie.netlify.app/api/login/", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         let parsed = JSON.parse(result);
