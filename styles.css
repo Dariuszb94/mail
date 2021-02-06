@@ -21,6 +21,8 @@ body{
     left:0;
     top: calc(100% - 36px);
 }
+/*login*/
+
 .login {
     margin:120px 0;
   display: grid;
@@ -29,19 +31,21 @@ body{
 }
 .login__main {
   background-color: #eceff1;
-  padding: 40px;
+  padding: 80px;
   border-radius: 4px;
+  animation: slide-right 1s ease-in-out;
 }
 .login-form {
   display: flex;
   flex-direction: column;
   max-width: 600px;
+ 
 }
 .login__info {
   justify-self: end;
-  padding-right:20px;
+  padding-right:40px;
   font-size: 32px;
-
+  animation: slide-left 1s ease-in-out;
 }
 .login-form__input {
   outline: none;
@@ -50,6 +54,12 @@ body{
   padding: 8px;
   margin-bottom: 20px;
   font-size: 20px;
+}
+.login-form__input:nth-child(1) {
+  animation: appear-from-down 1s ease-in-out;
+}
+.login-form__input:nth-child(2) {
+  animation: appear-from-up 1s ease-in-out;
 }
 .login-form__submit {
   background: linear-gradient(272deg, #ff3d01 0%, #ff1745 99.24%) !important;
@@ -68,12 +78,54 @@ body{
     -moz-box-shadow: 8px 9px 16px -10px rgba(255,0,0,1);
     box-shadow: 8px 9px 16px -10px rgba(255,0,0,1);
 }
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes appear-from-down {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes appear-from-up {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 /*succes*/
 
 .success-title{
   font-size: 48px;
   text-align: center;
-  animation: slide-down 1.5s ease;
+  animation: slide-down 1.5s ease-in-out;
   background-color: green;
   color:white;
   padding: 20px 0;
