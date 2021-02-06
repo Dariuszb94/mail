@@ -1,7 +1,7 @@
 let preHome = document.createElement("script");
 preHome.setAttribute("type", "text/html");
 preHome.innerHTML =
-  '<form class="login"><input class="login__input" id="username" /><input class="login__input"  id="password"/><button class="login__submit">Submit</button></form>';
+  '<form class="login"><input class="login__input" id="username"  placeholder="type your username"/><input class="login__input"  id="password" placeholder="type your password"/><button class="login__submit">Submit</button></form>';
 export const home = preHome;
 
 let preExample1 = document.createElement("script");

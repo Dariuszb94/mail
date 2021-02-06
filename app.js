@@ -2,6 +2,7 @@ import { route } from "./router";
 import { home } from "./templates/index.js";
 import { example1 } from "./templates/index.js";
 import { example2 } from "./templates/index.js";
+import "./styles.css";
 route("/", home.innerHTML, function () {
   //route("/", "home", function () {
   this.where = "here";
