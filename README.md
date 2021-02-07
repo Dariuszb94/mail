@@ -19,5 +19,5 @@ To run this project, download a repo, then go to repo folder, open terminal:
 
 ```
 $ yarn install
-$ npm run dev
+$ yarn run dev
 ```
